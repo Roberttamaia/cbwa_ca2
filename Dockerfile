@@ -10,7 +10,8 @@ USER static apk add npm wget tar
 RUN wget https://github.com/Roberttamaia/mobdev_ca3/archive/refs/heads/master.tar.gz
 RUN     cd /home/static/app/;  \
         tar xzvf master.tar.gz; \
-        
+ 
+ ### SET WORK DIRECTORY ###
 WORKDIR /app
 COPY ./BreakingBad/ .
 RUN npm install -g @angular/cli @ionic/cli
