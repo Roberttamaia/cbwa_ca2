@@ -1,25 +1,13 @@
-### SET UP A MULTI-STAGE Build ###
+# Specify a base image
+FROM node:16-alpine3.16
+### CREATE USER ###
 
-### STAGE 1: Build ###
+WORKDIR /app
+COPY ./BreakingBad/ .
+RUN npm install -g @angular/cli @ionic/cli
+RUN npm install -i
+RUN ng build
+# RUN echo $PWD
 
-FROM node:18-alpine3.15 AS builder
-
-WORKDIR .
-
-COPY package*.json ./
-
-#RUN npm install
-
-COPY . .
-
-ENV PORT=8080
-
-EXPOSE 8080
-
-CMD [ "npm", "start" ]
-
-
-
-
-
-
+FROM nginx:alpine
+COPY --from=0 /app/BreakingBad/www/ /usr/share/nginx/html
