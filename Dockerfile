@@ -6,7 +6,11 @@ RUN     apk add doas; \
         echo 'static:123' | chpasswd; \
         echo 'permit :wheel as root' > /etc/doas.d/doas.conf
 USER static apk add npm wget tar
-
+### GET GITHUB REPO AS ARCHIVE ###
+RUN wget https://github.com/Roberttamaia/mobdev_ca3/archive/refs/heads/master.tar.gz
+RUN     cd /home/static/app/;  \
+        tar xzvf master.tar.gz; \
+        
 WORKDIR /app
 COPY ./BreakingBad/ .
 RUN npm install -g @angular/cli @ionic/cli
