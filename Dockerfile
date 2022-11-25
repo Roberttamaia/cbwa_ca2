@@ -1,40 +1,25 @@
-# getting the node as an image 
-FROM node as build
+# Specify a base image
+	FROM node:16-alpine3.16
+	### CREATE USER ###
+	RUN     apk add doas; \
+	        adduser static -G wheel; \
+	        echo 'static:123' | chpasswd; \
+	        echo 'permit :wheel as root' > /etc/doas.d/doas.conf
+	USER static apk add npm wget tar
+	### GET GITHUB REPO AS ARCHIVE ###
+	RUN wget https://github.com/Roberttamaia/mobdev_ca3/archive/refs/heads/master.tar.gz
+	RUN     cd /home/static/app/;  \
+	        tar xzvf master.tar.gz; \
+	 
+	 ### SET WORK DIRECTORY ###
+	WORKDIR /app
+	COPY ./BreakingBad/ .
+	RUN npm install -g @angular/cli @ionic/cli
+	RUN npm install -i
+	RUN ng build
+	# RUN echo $PWD
+	
 
-# Creating app directory:
-WORKDIR /app
+	FROM nginx:alpine
+	COPY --from=0 /app/BreakingBad/www/ /usr/share/nginx/html
 
-#RUN adduser -D static
-
-# download my aplication from GitHub
-RUN wget https://github.com/Roberttamaia/mobdev_ca3/archive/main.tar.gz \
-&& tar xf main.tar.gz \
-&& rm main.tar.gz 
-
-#Changing directory
-WORKDIR /app/mobdev_ca3-main/
-
-# installing ionic globally
-RUN npm install -g ionic
-
-#Installing all its dependencies
-RUN npm install
-
-#
-RUN npm run build --prod
-
-# getting the nginx 
-FROM nginx:alpine
-
-
-#Exposing the port
-EXPOSE 80
-
-#removing everything from the default directory of nginx
-RUN rm -rf /usr/share/nginx/html/*
-
-#Copying the content of my application inside the default directory 
-#of nginx 
-COPY --from=build /app/mobdev_ca3-main/www /usr/share/nginx/html/
-
-#USER static
