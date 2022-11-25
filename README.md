@@ -48,3 +48,7 @@ a good option to host this repository in DigitalOcean.</br>
 
 The best option to host the project is DigitalOcean as it offers comparatively cheaper than AWS, its easier to manage a 
 project as compared to AWS and offers high-performance services. 
+
+References
+[easydeploy.io](https://www.easydeploy.io/blog/aws-vs-digitalocean/)
+[AWS vs Digitalocean vs Google Cloud vs Heroku vs Azure – Choose Best for a Startup](https://clockwise.software/blog/amazon-web-services-introduction-largest-cloud-services-provider/)
