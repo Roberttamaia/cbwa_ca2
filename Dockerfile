@@ -8,7 +8,7 @@ RUN wget https://github.com/Roberttamaia/mobdev_ca3/archive/refs/heads/master.ta
 RUN tar -C . -xvf /home/static/app/master.tar.gz
 RUN rm master.tar.gz
 RUN printf '%s\n' *
-WORKDIR /mobdev_ca3-master/BreakingBad/
+WORKDIR /home/static/app/mobdev_ca3-master/BreakingBad/
 RUN printf pwd
 RUN printf '%s\n' *
 RUN echo pwd
