@@ -1,13 +1,13 @@
 # cbwa_ca2
-This repository contains code to build a docker image with the [ Ionic app (mobdev_ca3)](https://github.com/Roberttamaia/mobdev_ca3.git) built for Mobile Development with a server and that is ready to be distributed.
+This repository contains code to build a docker image with the [ Ionic app (mobdev_ca3)](https://github.com/Roberttamaia/mobdev_ca3.git) built for Mobile Development with a server, and that is ready to be distributed.
 
 ### Instructions 
 
 You will need the following things properly installed on your computer.
 
-* Download the Github file.
+* Download the GitHub file.
 * Then open the Docker and open the terminal 
-* Run the following command line to access the folder that the file is located.
+* Run the following command line to access the file's folder.
 
 `cd C:\Users\User\Desktop`
 
@@ -25,7 +25,7 @@ You will need the following things properly installed on your computer.
 
 
 
-* Finally you can access the app from the browser.
+* Finally, you can access the app from the browser.
 
 
 `http://localhost:8080`
