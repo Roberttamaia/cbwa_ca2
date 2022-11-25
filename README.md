@@ -8,30 +8,28 @@ You will need the following things properly installed on your computer.
 * Download the Github file.
 * Then open the Docker and open the terminal 
 * Run the following command line to access the folder that the file is located.
-''' 
-cd C:\Users\User\Desktop
 
-'''
+`cd C:\Users\User\Desktop`
+
 
 * Then build the image with the following command line
 
-'''
-docker build -t cawa . 
 
-'''
+`docker build -t cawa . `
+
 
 * Run the Image 
 
-'''
-docker run -it --rm -p 8080:80 cawa
 
-'''
+`docker run -it --rm -p 8080:80 cawa`
+
+
 
 * Finally you can access the app from the browser.
 
-'''
-http://localhost:8080
 
-'''
+`http://localhost:8080`
+
+
 
 
